@@ -1,0 +1,59 @@
+<div class="container">
+  <h3 class="pink-text">All About Me</h3>
+  <ul>
+    <li>My name is : {{ name }}</li>
+    <li>Age : {{ age }}</li>
+    <li>Address: {{ address.street }}</li>
+    <li>{{ address.city }},{{ address.state }} {{ address.zipcode }}</li>
+    <h5>My hobbies:</h5>
+    <li *ngFor="let hobby of hobbies"> {{ hobby}} <button (click)="deleteHobby(hobby)">X</button> </li>
+  </ul>
+
+
+<form>
+  <h5>Edit User</h5>
+  <div>
+    <label for="name"></label>
+    <input type="text" [(ngModel)]=name name=name>
+
+    <label for="age"></label>
+    <input type="number" [(ngModel)]=age name=age>
+
+    <label for="street"></label>
+    <input type="text" [(ngModel)]=address.street name=street>
+
+    <label for="city"></label>
+    <input type="text" [(ngModel)]=address.city name=city>
+
+    <label for="state"></label>
+    <input type="text" [(ngModel)]=address.state name=state>
+
+    <label for="zipcode"></label>
+    <input type="text" [(ngModel)]=address.zipcode name=zipcode>
+  </div>
+</form>
+
+
+
+
+
+<form (submit)=" addHobby(hobby.value) ">
+  <div>
+    <label for="hobby"></label>
+    <input type="text" #hobby>
+  </div>
+</form>
+
+  <div class="row center white-text">
+    <h4 class="blue-text darken-4">Users</h4>
+    <div class="col s6 m4 col s6 col s10" *ngFor="let user of users">
+      <div class="card light-blue darken-1">
+      <p> User Id: {{ user.id }}</p>
+      <p> Name: {{ user.login }}</p>
+      <img src="{{ user.avatar_url }}" width="200px" height="200px">
+      <p> Type: {{ user.type}}</p>
+      <p><a class="white-text" href="{{ user.html_url}}">See Profile</a></p>
+    </div>
+  </div>
+</div>
+</div>
